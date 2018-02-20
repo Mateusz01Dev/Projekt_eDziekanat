@@ -8,8 +8,11 @@ public class Subject implements Savable {
 
     private String name;
 
-    public Subject(String name) {
+    private String ects;
+
+    public Subject(String name, String ects) {
         this.name = name;
+        this.ects = ects;
         id = currentId++;
     }
 
@@ -17,17 +20,31 @@ public class Subject implements Savable {
         return name;
     }
 
+    public String getEcts(){
+
+        return ects;
+
+    }
+
+    public void setEcts(String s) {
+
+    }
+
     @Override
     public String getAllData() {
         String allData = "";
         allData += "Subject " + id + "\n";
         allData += name + "\n";
+        allData += "Punkty ects" + ects;
 
         return allData;
     }
+
+
 
     @Override
     public String getFileName() {
         return "subject.txt";
     }
+
 }

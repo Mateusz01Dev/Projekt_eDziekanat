@@ -1,6 +1,8 @@
 package pl.edu.pg;
 
-public class Student extends Person implements Savable {
+import java.io.Serializable;
+
+public class Student extends Person implements Savable  {
 
     private Long id;
 
@@ -8,12 +10,18 @@ public class Student extends Person implements Savable {
 
     private Integer albumNumber;
     private StudentStatus status = StudentStatus.ACTIVE;
+    private Score ratings = Score.BEST;
 
     public Student(String firstName, String lastName, Long pesel, Integer albumNumber) {
         super(firstName, lastName, pesel);
         this.albumNumber = albumNumber;
-        id = currentId;
+        id = currentId++;
     }
+
+    public Student() {
+
+    }
+
 
     @Override
     public void info() {
@@ -22,7 +30,8 @@ public class Student extends Person implements Savable {
         System.out.println("nazwisko: " + lastName);
         System.out.println("pesel: " + pesel);
         System.out.println("nr albumu: " + albumNumber);
-        System.out.println("status: " + status.getValueEN());
+        System.out.println("status: " + status.getValueEN() + status.getValuePL());
+        System.out.println("ocena całoroczna: " + ratings.getValueRating() + ratings.getValueRating1() );
         System.out.println();       // wypisz linię odstępu
     }
 
@@ -40,6 +49,15 @@ public class Student extends Person implements Savable {
         this.status = status;
     }
 
+    public Score getRatings() {
+        return ratings;
+
+    }
+
+    public void setRatings(Score ratings) {
+        this.ratings = ratings;
+    }
+
     @Override
     public String getAllData() {
         String allData = "";
@@ -49,6 +67,7 @@ public class Student extends Person implements Savable {
         allData += pesel + "\n";
         allData += albumNumber + "\n";
         allData += status + "\n";
+        allData += ratings + "\n";
         return allData;
     }
 

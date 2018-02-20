@@ -1,6 +1,6 @@
 package pl.edu.pg;
 
-public abstract class Person {
+public abstract class Person extends Saver {
 
     protected String firstName;
     protected String lastName;
@@ -10,6 +10,10 @@ public abstract class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
+    }
+
+    public Person() {
+
     }
 
     @Override

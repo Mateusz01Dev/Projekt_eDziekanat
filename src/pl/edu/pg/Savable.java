@@ -1,6 +1,6 @@
 package pl.edu.pg;
 
-public interface Savable {
+public interface Savable  {
 
     String getAllData();
 
